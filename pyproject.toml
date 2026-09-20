@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "regression-model-benchmark"
+version = "1.0.0"
+description = "A reproducible comparison of classical regression models using cross-validation and a held-out test set."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Muhammet Yusuf Polat" }
+]
+dependencies = [
+  "matplotlib>=3.8,<4.0",
+  "numpy>=1.26,<3.0",
+  "pandas>=2.1,<3.0",
+  "scikit-learn>=1.4,<2.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0,<9.0",
+  "ruff>=0.8,<1.0"
+]
+
+[project.scripts]
+regression-benchmark = "regression_benchmark.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
